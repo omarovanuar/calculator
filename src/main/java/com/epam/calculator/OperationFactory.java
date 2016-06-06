@@ -21,7 +21,7 @@ public class OperationFactory {
                 operation = new Div();
                 break;
             default:
-                operation = new Exit();
+                operation = null;
                 break;
         }
         return operation;

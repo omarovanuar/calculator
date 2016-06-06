@@ -1,6 +1,5 @@
 package com.epam.calculator;
 
-import com.epam.calculator.operation.Exit;
 import com.epam.calculator.operation.Operation;
 
 import java.util.Scanner;
@@ -17,7 +16,7 @@ public class Runner {
                 System.out.println("Please, input kind of operation\n +\n -\n *\n /\n any: exit");
                 String operationString = scanner.next();
                 Operation operation = OperationFactory.getInstance(operationString);
-                if (operation.getClass().isInstance(new Exit())) break;
+                if (operation == null) break;
                 System.out.println("Please, input b");
                 double b = scanner.nextDouble();
                 double result = operation.calculate(a, b);
