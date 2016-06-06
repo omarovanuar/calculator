@@ -2,23 +2,17 @@ package com.epam.calculator;
 
 import com.epam.calculator.operation.Operation;
 
-import java.util.Scanner;
-
 public class Runner {
     public static void main(String[] args) {
         boolean repeat = true;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please, input a");
         double a;
         try {
-            a = sc.nextDouble();
+            a = Double.valueOf(InputUtil.read("Please, input a"));
             while (repeat) {
                 try {
-                    System.out.println("Please, input kind of operation\n +\n -\n *\n /\n any: exit");
-                    String operationString = sc.next();
+                    String operationString = InputUtil.read("Please, input kind of operation\n +\n -\n *\n /\n any: exit");
                     Operation operation = OperationFactory.getInstance(operationString);
-                    System.out.println("Please, input b");
-                    double b = sc.nextDouble();
+                    double b = Double.valueOf(InputUtil.read("Please, input b"));
                     double result = operation.calculate(a, b);
                     System.out.println("Result:\n" + result + "\n");
                     a = result;
