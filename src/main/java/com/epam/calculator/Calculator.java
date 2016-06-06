@@ -3,27 +3,30 @@ package com.epam.calculator;
 public class Calculator {
     private int firstNumber;
     private int secondNumber;
+    private int operation;
+    private double result;
 
 
-    public Calculator(int firstNumber, int secondNumber) {
+    public Calculator(int firstNumber, int secondNumber, int operation) {
         this.firstNumber = firstNumber;
         this.secondNumber = secondNumber;
+        this.operation = operation;
+        calculate();
     }
 
-    public void calculate(int operation) {
-        System.out.println("And the result is:");
+    public void calculate() {
         switch (operation) {
             case 1:
-                System.out.print(this.sum());
+                result = this.sum();
                 break;
             case 2:
-                System.out.print(this.sub());
+                result = this.sub();
                 break;
             case 3:
-                System.out.print(this.multiply());
+                result = this.multiply();
                 break;
             case 4:
-                System.out.print(this.divide());
+                result = this.divide();
                 break;
             default:
                 System.out.println("Unknown operation");
@@ -45,5 +48,9 @@ public class Calculator {
 
     private double divide() {
         return (double) this.firstNumber / this.secondNumber;
+    }
+
+    public Double getResult() {
+        return result;
     }
 }
