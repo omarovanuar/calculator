@@ -6,24 +6,26 @@ import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args) {
-        int counter = 1;
         boolean repeat = true;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please, input " + counter + " number");
-        Double a = sc.nextDouble();
-        while (repeat)
+        System.out.println("Please, input a");
+        double a;
         try {
-            System.out.println("Please, input kind of operation\n 1: +\n 2: -\n 3: *\n 4: /\n 0: exit");
-            int operationInt = sc.nextInt();
-            Operation operation = OperationFactory.getInstance(operationInt);
-            counter++;
-            System.out.println("Please, input " + counter + " number");
-            Double b = sc.nextDouble();
-            double result = operation.operate(a, b);
-            System.out.println("Result:\n" + result + "\n");
-            a = result;
-        } catch (RuntimeException e) {
-            repeat = false;
+            a = sc.nextDouble();
+            while (repeat) {
+                try {
+                    System.out.println("Please, input kind of operation\n +\n -\n *\n /\n any: exit");
+                    String operationString = sc.next();
+                    Operation operation = OperationFactory.getInstance(operationString);
+                    System.out.println("Please, input b");
+                    double b = sc.nextDouble();
+                    double result = operation.calculate(a, b);
+                    System.out.println("Result:\n" + result + "\n");
+                    a = result;
+                } catch (RuntimeException e) {
+                    repeat = false;
+                }
+            }
         } catch (Exception e) {
             System.out.println("Something is going wrong...");
         }

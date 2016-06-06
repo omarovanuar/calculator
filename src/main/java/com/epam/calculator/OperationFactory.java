@@ -4,23 +4,22 @@ import com.epam.calculator.operation.*;
 
 public class OperationFactory {
 
-    public static Operation getInstance(int operationInt) {
+    public static Operation getInstance(String operationString) {
         Operation operation;
-        switch (operationInt) {
-            case 1:
+        char operationChar = operationString.charAt(0);
+        switch (operationChar) {
+            case '+':
                 operation = new Sum();
                 break;
-            case 2:
+            case '-':
                 operation = new Sub();
                 break;
-            case 3:
+            case '*':
                 operation = new Mult();
                 break;
-            case 4:
+            case '/':
                 operation = new Div();
                 break;
-            case 0:
-                throw new RuntimeException();
             default:
                 throw new RuntimeException();
         }
