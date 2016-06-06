@@ -21,7 +21,8 @@ public class OperationFactory {
                 operation = new Div();
                 break;
             default:
-                throw new RuntimeException();
+                operation = new Exit();
+                break;
         }
         return operation;
     }
